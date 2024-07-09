@@ -129,8 +129,11 @@ function reiniciar() {
     fallos = 0;
     $("#toposRestantes").text(toposRestantes);
     $("#fallos").text(fallos);
-    // Si ponemos undefined no hace caso
-    $(".casilla").css("background-image", "url(imagenes/cesped.png").data("topo", "no");
+    $(".casilla")
+        .css("background-image", "url(imagenes/cesped.png")
+        .data("topo", "no") // Si ponemos undefined no lo guarda
+        .off("click") // Debe hacer el off pues peude haber casillas con el evento
+        .on("click", comprobarCasilla);
     prepararJuego();
 }
 
